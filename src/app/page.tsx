@@ -6,6 +6,7 @@ import TransportCard from '@/components/TransportCard';
 import IstanbulMap from '@/components/IstanbulMap';
 import Confetti from '@/components/Confetti';
 import ShareCard from '@/components/ShareCard';
+import AdBanner from '@/components/AdBanner';
 import { UserTransport, getRandomUserFromFirebase, getUserCountFromFirebase } from '@/lib/storage';
 import { District, getDistanceBetweenDistricts } from '@/data/districts';
 
@@ -149,8 +150,13 @@ export default function Home() {
         </div>
       </header>
 
+      {/* Top Ad Banner */}
+      <div className="max-w-lg mx-auto w-full px-4">
+        <AdBanner format="horizontal" />
+      </div>
+
       {/* Main Content */}
-      <div className="flex-1 overflow-auto max-w-lg mx-auto w-full px-4 py-3">
+      <div className="flex-1 overflow-auto max-w-lg mx-auto w-full px-4 py-2">
         {/* Loading Phase */}
         {phase === 'loading' && (
           <div className="flex items-center justify-center h-full">
@@ -230,6 +236,11 @@ export default function Home() {
             </button>
           </div>
         )}
+      </div>
+
+      {/* Bottom Ad Banner */}
+      <div className="max-w-lg mx-auto w-full px-4 pb-2">
+        <AdBanner format="horizontal" />
       </div>
     </main>
   );

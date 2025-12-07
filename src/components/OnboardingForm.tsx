@@ -19,23 +19,53 @@ export default function OnboardingForm({ onSubmit }: OnboardingFormProps) {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
 
+    // Check if data looks realistic
+    const isRealisticData = (data: { metrobus: number; marmaray: number; vapur: number; metro: number; otobus: number }): boolean => {
+        const values = [data.metrobus, data.marmaray, data.vapur, data.metro, data.otobus];
+        const total = values.reduce((a, b) => a + b, 0);
+
+        // Too low: total under 30 or all values under 10
+        if (total < 30 || values.every(v => v < 10)) return false;
+
+        // Too high: total over 2000 or any single value over 500
+        if (total > 2000 || values.some(v => v > 500)) return false;
+
+        return true;
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
 
+        const userData = {
+            district: formData.district,
+            metrobus: parseInt(formData.metrobus) || 0,
+            marmaray: parseInt(formData.marmaray) || 0,
+            vapur: parseInt(formData.vapur) || 0,
+            metro: parseInt(formData.metro) || 0,
+            otobus: parseInt(formData.otobus) || 0,
+        };
+
         try {
-            const user = await addUserToFirebase({
-                district: formData.district,
-                metrobus: parseInt(formData.metrobus) || 0,
-                marmaray: parseInt(formData.marmaray) || 0,
-                vapur: parseInt(formData.vapur) || 0,
-                metro: parseInt(formData.metro) || 0,
-                otobus: parseInt(formData.otobus) || 0,
-            });
-            onSubmit(user);
+            // Only save to Firebase if data looks realistic
+            if (isRealisticData(userData)) {
+                const user = await addUserToFirebase(userData);
+                onSubmit(user);
+            } else {
+                // Let user play but don't save unrealistic data
+                console.log('Unrealistic data - not saving to Firebase');
+                onSubmit({
+                    id: `temp_${Date.now()}`,
+                    ...userData
+                });
+            }
         } catch (error) {
             console.error('Error saving data:', error);
-            alert('Veri kaydedilemedi. Lütfen tekrar deneyin.');
+            // Still let user play even if Firebase fails
+            onSubmit({
+                id: `temp_${Date.now()}`,
+                ...userData
+            });
         } finally {
             setIsSubmitting(false);
         }
@@ -72,7 +102,7 @@ export default function OnboardingForm({ onSubmit }: OnboardingFormProps) {
                                     onChange={handleChange}
                                     placeholder={placeholder}
                                     min="0"
-                                    className="w-full px-1 py-1.5 bg-gray-800 border border-white/20 rounded-lg text-white placeholder-gray-600 text-center text-sm focus:ring-1 focus:ring-purple-500 outline-none"
+                                    className="w-full px-1 py-1.5 bg-gray-800 border border-white/20 rounded-lg text-white placeholder:text-gray-600/50 text-center text-sm focus:ring-1 focus:ring-purple-500 outline-none"
                                 />
                                 <p className="text-[9px] text-gray-500 mt-0.5 truncate">{label}</p>
                             </div>
