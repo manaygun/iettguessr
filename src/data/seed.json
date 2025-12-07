@@ -1,0 +1,184 @@
+{
+    "users": [
+        {
+            "id": "1",
+            "district": "Beylikdüzü",
+            "metrobus": 420,
+            "marmaray": 12,
+            "vapur": 3,
+            "metro": 45,
+            "otobus": 85
+        },
+        {
+            "id": "2",
+            "district": "Kadıköy",
+            "metrobus": 25,
+            "marmaray": 65,
+            "vapur": 340,
+            "metro": 180,
+            "otobus": 95
+        },
+        {
+            "id": "3",
+            "district": "Pendik",
+            "metrobus": 35,
+            "marmaray": 380,
+            "vapur": 8,
+            "metro": 25,
+            "otobus": 120
+        },
+        {
+            "id": "4",
+            "district": "Adalar",
+            "metrobus": 0,
+            "marmaray": 45,
+            "vapur": 520,
+            "metro": 15,
+            "otobus": 10
+        },
+        {
+            "id": "5",
+            "district": "Esenyurt",
+            "metrobus": 480,
+            "marmaray": 8,
+            "vapur": 2,
+            "metro": 35,
+            "otobus": 150
+        },
+        {
+            "id": "6",
+            "district": "Üsküdar",
+            "metrobus": 45,
+            "marmaray": 210,
+            "vapur": 185,
+            "metro": 245,
+            "otobus": 75
+        },
+        {
+            "id": "7",
+            "district": "Beşiktaş",
+            "metrobus": 85,
+            "marmaray": 35,
+            "vapur": 280,
+            "metro": 320,
+            "otobus": 45
+        },
+        {
+            "id": "8",
+            "district": "Kartal",
+            "metrobus": 40,
+            "marmaray": 350,
+            "vapur": 25,
+            "metro": 95,
+            "otobus": 110
+        },
+        {
+            "id": "9",
+            "district": "Avcılar",
+            "metrobus": 390,
+            "marmaray": 15,
+            "vapur": 5,
+            "metro": 55,
+            "otobus": 180
+        },
+        {
+            "id": "10",
+            "district": "Şişli",
+            "metrobus": 120,
+            "marmaray": 45,
+            "vapur": 35,
+            "metro": 420,
+            "otobus": 65
+        },
+        {
+            "id": "11",
+            "district": "Maltepe",
+            "metrobus": 55,
+            "marmaray": 285,
+            "vapur": 45,
+            "metro": 125,
+            "otobus": 140
+        },
+        {
+            "id": "12",
+            "district": "Fatih",
+            "metrobus": 180,
+            "marmaray": 95,
+            "vapur": 125,
+            "metro": 220,
+            "otobus": 200
+        },
+        {
+            "id": "13",
+            "district": "Bakırköy",
+            "metrobus": 145,
+            "marmaray": 55,
+            "vapur": 85,
+            "metro": 290,
+            "otobus": 75
+        },
+        {
+            "id": "14",
+            "district": "Sarıyer",
+            "metrobus": 65,
+            "marmaray": 25,
+            "vapur": 95,
+            "metro": 185,
+            "otobus": 220
+        },
+        {
+            "id": "15",
+            "district": "Ataşehir",
+            "metrobus": 95,
+            "marmaray": 145,
+            "vapur": 15,
+            "metro": 280,
+            "otobus": 85
+        },
+        {
+            "id": "16",
+            "district": "Bahçelievler",
+            "metrobus": 310,
+            "marmaray": 35,
+            "vapur": 8,
+            "metro": 195,
+            "otobus": 125
+        },
+        {
+            "id": "17",
+            "district": "Tuzla",
+            "metrobus": 25,
+            "marmaray": 420,
+            "vapur": 35,
+            "metro": 15,
+            "otobus": 165
+        },
+        {
+            "id": "18",
+            "district": "Beyoğlu",
+            "metrobus": 75,
+            "marmaray": 65,
+            "vapur": 145,
+            "metro": 385,
+            "otobus": 55
+        },
+        {
+            "id": "19",
+            "district": "Küçükçekmece",
+            "metrobus": 365,
+            "marmaray": 20,
+            "vapur": 5,
+            "metro": 85,
+            "otobus": 195
+        },
+        {
+            "id": "20",
+            "district": "Ümraniye",
+            "metrobus": 110,
+            "marmaray": 185,
+            "vapur": 12,
+            "metro": 245,
+            "otobus": 165
+        }
+    ]
+}
