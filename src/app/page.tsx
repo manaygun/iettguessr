@@ -36,15 +36,52 @@ export default function Home() {
   });
   const [showConfetti, setShowConfetti] = useState(false);
   const [userCount, setUserCount] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  // Fetch user count on mount
+  const STORAGE_KEY = 'iett_guessr_state';
+
+  // Load state on mount
   useEffect(() => {
-    const fetchCount = async () => {
-      const count = await getUserCountFromFirebase();
-      setUserCount(count);
+    const loadState = async () => {
+      try {
+        // Always fetch latest count first
+        const count = await getUserCountFromFirebase();
+        setUserCount(count);
+
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          // Verify if saved state is valid
+          if (parsed.gameState && parsed.phase) {
+            setGameState(parsed.gameState);
+            setPhase(parsed.phase);
+            setMyUserId(parsed.myUserId || null);
+            console.log("Game state restored");
+          }
+        }
+      } catch (e) {
+        console.error("Failed to load state", e);
+      } finally {
+        setIsLoaded(true);
+      }
     };
-    fetchCount();
+    loadState();
   }, []);
+
+  // Save state on change
+  useEffect(() => {
+    if (!isLoaded) return;
+
+    // Don't save if in onboarding phase (unless needed?)
+    // Actually better to save everything so even onboarding progress is kept if we had it
+    const stateToSave = {
+      gameState,
+      phase,
+      myUserId,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(stateToSave));
+  }, [gameState, phase, myUserId, isLoaded]);
 
   const startNewRound = useCallback(async (excludeId?: string) => {
     const randomUser = await getRandomUserFromFirebase(excludeId);
@@ -110,6 +147,9 @@ export default function Home() {
   };
 
   const handlePlayAgain = async () => {
+    // Clear storage to start fresh
+    localStorage.removeItem(STORAGE_KEY);
+
     setPhase('loading');
     const count = await getUserCountFromFirebase();
     setUserCount(count);
