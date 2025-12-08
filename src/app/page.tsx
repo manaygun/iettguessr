@@ -145,6 +145,16 @@ export default function Home() {
               <span className="px-2 py-1 bg-purple-500/20 rounded-lg text-purple-300 font-medium">
                 {gameState.score} puan
               </span>
+              <a
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`IETT Guessr'da şu an ${gameState.score} puanım var! 🚇 Sen de dene: https://iett-guessr.netlify.app`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1 px-2 bg-black/50 hover:bg-black/80 rounded-lg text-white transition-colors border border-white/10 flex items-center gap-1"
+                aria-label="Skoru X'te Paylaş"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="w-3 h-3 fill-current"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                <span className="text-xs font-medium">Paylaş</span>
+              </a>
             </div>
           )}
         </div>
