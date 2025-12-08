@@ -43,14 +43,13 @@ export default function RootLayout({
     <html lang="tr">
       <head>
         <meta name="google-adsense-account" content="ca-pub-4986993922938185" />
-      </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
-        <Script
+        <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4986993922938185"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
         />
+      </head>
+      <body className={`${inter.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>
