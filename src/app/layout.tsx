@@ -41,7 +41,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr">
-      <head />
+      <head>
+        <meta name="google-adsense-account" content="ca-pub-4986993922938185" />
+      </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <Script
           async
