@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
+import GoogleAdsense from "@/components/GoogleAdsense";
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -43,13 +45,9 @@ export default function RootLayout({
     <html lang="tr">
       <head>
         <meta name="google-adsense-account" content="ca-pub-4986993922938185" />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4986993922938185"
-          crossOrigin="anonymous"
-        />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
+        <GoogleAdsense />
         {children}
       </body>
     </html>
