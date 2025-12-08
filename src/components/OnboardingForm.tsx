@@ -19,13 +19,13 @@ export default function OnboardingForm({ onSubmit }: OnboardingFormProps) {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // Check if data looks realistic
+    // Check if data looks realistic (0 values are allowed)
     const isRealisticData = (data: { metrobus: number; marmaray: number; vapur: number; metro: number; otobus: number }): boolean => {
         const values = [data.metrobus, data.marmaray, data.vapur, data.metro, data.otobus];
         const total = values.reduce((a, b) => a + b, 0);
 
-        // Too low: total under 30 or all values under 10
-        if (total < 30 || values.every(v => v < 10)) return false;
+        // Too low: total under 10 (some usage is needed)
+        if (total < 10) return false;
 
         // Too high: total over 2000 or any single value over 500
         if (total > 2000 || values.some(v => v > 500)) return false;
